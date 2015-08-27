@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'omniauth-oauth', '~> 1.0'
+  s.add_runtime_dependency 'omniauth-oauth2', '~> 1.1'
   s.add_runtime_dependency 'multi_xml'
 end

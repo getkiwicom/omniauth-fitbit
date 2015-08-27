@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'omniauth-oauth', '~> 1.0'
+gem 'omniauth-oauth2', '~> 1.1'
 
 group :development, :test do
   gem 'rspec'

@@ -1,6 +1,6 @@
 # OmniAuth Fitbit Strategy
 
-This gem is an OmniAuth 1.0+ Strategy for the [Fitbit API](https://wiki.fitbit.com/display/API/OAuth+Authentication+in+the+Fitbit+API).
+This gem is an OmniAuth 2.0+ Strategy for the [Fitbit API](https://wiki.fitbit.com/display/API/OAuth+Authentication+in+the+Fitbit+API).
 
 ## Usage
 
