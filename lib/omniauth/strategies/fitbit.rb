@@ -12,9 +12,8 @@ module OmniAuth
       option :client_options, {
           :site               => 'https://api.fitbit.com',
           :authorize_url      => 'https://www.fitbit.com/oauth2/authorize',
-          :request_token_path => '/oauth/request_token',
-          :access_token_path  => '/oauth/access_token',
-          :authorize_path     => '/oauth/authorize'
+          :access_token_path  => '/oauth2/token',
+          :authorize_path     => '/oauth2/authorize'
       }
 
       # These are called after authentication has succeeded. If
