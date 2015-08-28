@@ -11,9 +11,14 @@ module OmniAuth
       # initializing your consumer from the OAuth gem.
       option :client_options, {
           :site               => 'https://api.fitbit.com',
-          :authorize_url      => 'https://www.fitbit.com/oauth2/authorize',
-          :access_token_path  => '/oauth2/token',
-          :authorize_path     => '/oauth2/authorize'
+          :authorize_url      => '/oauth2/authorize',
+          :token_url          => '/oauth2/token'
+      }
+      byebug
+      option :token_params, {
+        :headers => {
+          'Authorization' => "Basic " + Base64.encode64("#{self.default_options.client_id}:#{self.default_options.client_secret}")
+        }
       }
 
       # These are called after authentication has succeeded. If
