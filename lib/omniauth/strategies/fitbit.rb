@@ -14,7 +14,6 @@ module OmniAuth
           :authorize_url      => '/oauth2/authorize',
           :token_url          => '/oauth2/token'
       }
-      byebug
       option :token_params, {
         :headers => {
           'Authorization' => "Basic " + Base64.encode64("#{self.default_options.client_id}:#{self.default_options.client_secret}")
