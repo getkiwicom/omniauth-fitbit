@@ -10,23 +10,27 @@ module OmniAuth
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
       option :client_options, {
-          :site               => 'https://www.fitbit.com',
-          :authorize_url      => '/oauth2/authorize',
-          :token_url          => '/oauth2/token'
-      }
-      option :token_params, {
-        :headers => {
-          'Authorization' => "Basic " + Base64.encode64("#{self.default_options.client_id}:#{self.default_options.client_secret}")
-        }
+        :site           => 'https://api.fitbit.com',
+        :authorize_url  => 'https://www.fitbit.com/oauth2/authorize',
+        :token_url      => 'https://api.fitbit.com/oauth2/token'
       }
 
-      # These are called after authentication has succeeded. If
-      # possible, you should try to set the UID without making
-      # additional calls (if the user id is returned with the token
-      # or as a URI parameter). This may not be possible with all
-      # providers.
+      option :authorize_options, [:scope, :response_type]
+      option :response_type, 'code'
+
+      def build_access_token
+        options.token_params.merge!(:headers =>
+          {'Authorization' => basic_auth_header})
+        super
+      end
+
+      def basic_auth_header
+        'Basic ' + Base64.encode64(options[:client_id] + ':' +
+          options[:client_secret]).gsub("\n", '')
+      end
+
       uid do
-        access_token.params['encoded_user_id']
+        raw_info['user']['encodedId']
       end
 
       info do
@@ -52,7 +56,6 @@ module OmniAuth
           :raw_info => raw_info
         }
       end
-
 
       def raw_info
         if options[:use_english_measure] == 'true'
